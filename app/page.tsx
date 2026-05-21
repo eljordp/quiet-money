@@ -1,14 +1,16 @@
 import { ApplyForm } from "./apply-form";
+import { RunYourNumbers } from "./calculator";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-night text-cream">
       <Nav />
       <Hero />
-      <Thesis />
+      <Manifesto />
+      <RunYourNumbers />
       <HowItWorks />
       <Industries />
-      <ExampleDeal />
+      <Proof />
       <WhoThisIsFor />
       <Apply />
       <Footer />
@@ -18,30 +20,35 @@ export default function Home() {
 
 function Nav() {
   return (
-    <header className="border-b border-line">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-        <a href="#top" className="font-serif text-xl tracking-tight text-ink">
-          Quiet Money
+    <header className="sticky top-0 z-30 border-b border-line bg-night/85 backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <a href="#top" className="flex items-center gap-2">
+          <span className="font-serif text-2xl font-bold tracking-tight text-cream">
+            Stack
+          </span>
+          <span className="hidden text-[10px] uppercase tracking-[0.35em] text-amber sm:inline">
+            est. 2026
+          </span>
         </a>
-        <nav className="hidden gap-8 text-sm text-ink-soft md:flex">
-          <a href="#thesis" className="hover:text-blood">
-            Thesis
+        <nav className="hidden gap-8 text-xs uppercase tracking-[0.25em] text-cream-soft md:flex">
+          <a href="#numbers" className="hover:text-amber">
+            Numbers
           </a>
-          <a href="#how" className="hover:text-blood">
+          <a href="#how" className="hover:text-amber">
             How
           </a>
-          <a href="#example" className="hover:text-blood">
-            Example
+          <a href="#own" className="hover:text-amber">
+            Own
           </a>
-          <a href="#who" className="hover:text-blood">
-            Who it&apos;s for
+          <a href="#who" className="hover:text-amber">
+            Who
           </a>
         </nav>
         <a
           href="#apply"
-          className="rounded-full border border-ink bg-ink px-5 py-2 text-xs uppercase tracking-widest text-bone transition hover:bg-blood hover:border-blood"
+          className="rounded-full bg-amber px-5 py-2 text-xs font-semibold uppercase tracking-widest text-night transition hover:bg-amber-2"
         >
-          Apply
+          Run mine
         </a>
       </div>
     </header>
@@ -50,75 +57,101 @@ function Nav() {
 
 function Hero() {
   return (
-    <section id="top" className="border-b border-line">
-      <div className="mx-auto max-w-5xl px-6 py-28 md:py-40">
-        <p className="mb-8 text-xs uppercase tracking-[0.3em] text-mute">
-          By invitation
+    <section
+      id="top"
+      className="relative overflow-hidden border-b border-line grain"
+    >
+      <div className="mx-auto max-w-6xl px-6 py-24 md:py-36">
+        <p className="rise mb-8 inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.4em] text-amber">
+          <span className="shimmer inline-block h-1.5 w-1.5 rounded-full bg-amber" />
+          12 seats / year
         </p>
-        <h1 className="font-serif text-5xl leading-[1.05] tracking-tight text-ink md:text-7xl">
-          Own a business
+
+        <h1 className="rise-2 font-serif text-[clamp(3.25rem,9vw,7.5rem)] font-black leading-[0.92] tracking-tight text-cream">
+          Twenty <span className="italic text-amber">stacks</span> in.
           <br />
-          no one&apos;s bragging about.
+          Eight hundred <span className="italic text-amber">out</span>.
         </h1>
-        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink-soft md:text-xl">
-          The quietest path to real wealth in America is the same one boomers
-          walked for forty years. Buy a boring, cash-flowing business. Run it.
-          Sell it. We help operators do exactly that, without writing a check
-          for the whole thing.
+
+        <p className="rise-3 mt-10 max-w-2xl text-lg leading-relaxed text-cream-soft md:text-xl">
+          We help operators buy boring, cash-flowing American businesses
+          using funded capital. You bring the work ethic. We bring the deal,
+          the money, and the exit. Three years from now you cash out and
+          start the second one.
         </p>
-        <div className="mt-12 flex flex-wrap items-center gap-6">
+
+        <div className="rise-3 mt-12 flex flex-wrap items-center gap-5">
+          <a
+            href="#numbers"
+            className="group inline-flex items-center gap-3 rounded-full bg-amber px-8 py-4 text-sm font-semibold uppercase tracking-widest text-night transition hover:bg-amber-2"
+          >
+            Run my numbers
+            <span className="transition-transform group-hover:translate-x-1">
+              →
+            </span>
+          </a>
           <a
             href="#apply"
-            className="rounded-full bg-ink px-8 py-4 text-sm uppercase tracking-widest text-bone transition hover:bg-blood"
+            className="text-sm uppercase tracking-widest text-cream-soft underline-offset-8 hover:underline"
           >
-            See if you qualify
+            Skip to apply
           </a>
-          <a
-            href="#thesis"
-            className="text-sm uppercase tracking-widest text-ink-soft underline-offset-8 hover:underline"
-          >
-            Read the thesis
-          </a>
+        </div>
+
+        <div className="mt-24 grid max-w-4xl grid-cols-3 gap-6 border-t border-line pt-10 md:gap-12">
+          <Stat top="$20K" bottom="Your starting capital" />
+          <Stat top="$400K" bottom="Business you'd buy" />
+          <Stat top="$800K+" bottom="Your lump sum exit" />
         </div>
       </div>
     </section>
   );
 }
 
-function Thesis() {
+function Stat({ top, bottom }: { top: string; bottom: string }) {
   return (
-    <section id="thesis" className="border-b border-line bg-bone-deep">
+    <div>
+      <p className="numeral font-serif text-3xl font-bold tracking-tight text-amber md:text-5xl">
+        {top}
+      </p>
+      <p className="mt-2 text-xs uppercase tracking-[0.2em] text-cream-soft">
+        {bottom}
+      </p>
+    </div>
+  );
+}
+
+function Manifesto() {
+  return (
+    <section className="border-b border-line bg-night-2">
       <div className="mx-auto max-w-5xl px-6 py-24 md:py-32">
-        <p className="mb-6 text-xs uppercase tracking-[0.3em] text-mute">
-          The thesis
+        <p className="mb-8 text-[10px] uppercase tracking-[0.4em] text-amber">
+          The play
         </p>
-        <h2 className="font-serif text-4xl leading-tight tracking-tight text-ink md:text-5xl">
-          Ten thousand boomers
-          <br />
-          retire every day.
-        </h2>
-        <div className="mt-10 grid gap-10 text-base leading-relaxed text-ink-soft md:grid-cols-2 md:text-lg">
+        <p className="font-serif text-3xl leading-[1.15] text-cream md:text-5xl">
+          Ten thousand boomers retire <em className="text-amber">every</em>{" "}
+          day. Each one walks away from a business that runs without them.{" "}
+          <span className="text-cream-soft">
+            Most of those businesses get sold for pennies, rolled up by private
+            equity, or shut down.
+          </span>{" "}
+          That&apos;s where you come in.
+        </p>
+        <div className="mt-12 grid gap-8 border-t border-line pt-10 text-base leading-relaxed text-cream-soft md:grid-cols-3 md:text-lg">
           <p>
-            Most of them own a business. A car wash. An accounting practice. A
-            cleaning company that&apos;s done $600K a year for twenty years.
-            They built it. They&apos;re ready to step out. Their kids
-            don&apos;t want it.
+            <span className="font-serif text-amber">01.</span> They sourced the
+            land. Built the routes. Hired the crew. You don&apos;t need to do
+            any of that. The hard part is done.
           </p>
           <p>
-            That business has to go somewhere. Most owners would rather sell to
-            a person than a private equity roll-up. The right buyer can step
-            in, modernize what the founder never bothered to, and 3 to 5x the
-            revenue in a few years.
+            <span className="font-serif text-amber">02.</span> Business credit
+            and outside capital fund the buy. Your savings stay liquid. The
+            company services its own debt.
           </p>
           <p>
-            You don&apos;t need to be rich. You need enough liquid to start the
-            engine. Business credit, seller financing, and outside capital fund
-            the actual purchase. Your savings stay where they are.
-          </p>
-          <p>
-            That&apos;s the play. Real ownership of a real business, bought
-            with structured capital, scaled with modern tools, exited inside
-            five years.
+            <span className="font-serif text-amber">03.</span> Modernize what
+            the founder didn&apos;t. 3 to 5x revenue in two years. Sell into a
+            multiple. Take the lump sum.
           </p>
         </div>
       </div>
@@ -130,50 +163,60 @@ function HowItWorks() {
   const steps = [
     {
       n: "01",
-      title: "Qualify",
-      body: "A short call. Liquid, credit, timeline, the kind of operator you actually want to be. If you're a fit we move. If not, we'll tell you.",
+      t: "Qualify",
+      d: "Short call. Liquid, credit, timeline. If you&apos;re a fit we move. If not, we&apos;ll say so.",
     },
     {
       n: "02",
-      title: "Position",
-      body: "We get your file in shape for serious business funding. Personal credit cleaned where needed, corporate structure set up to qualify for real leverage.",
+      t: "Position",
+      d: "Personal credit cleaned. Corporate structure built. Funding lines opened in your name.",
     },
     {
       n: "03",
-      title: "Source",
-      body: "Our acquisitions team scouts your market for boring, profitable businesses with clean financials. Negotiations and financing handled end to end.",
+      t: "Source",
+      d: "Acquisitions team scouts your market. Boring profitable businesses with clean books.",
     },
     {
       n: "04",
-      title: "Operate",
-      body: "You take the keys. We help you modernize what the seller didn't. Better systems, better marketing, better margins. Real numbers, not theory.",
+      t: "Operate",
+      d: "You take the keys. We help modernize. Better systems, better marketing, better margins.",
     },
     {
       n: "05",
-      title: "Exit",
-      body: "Run for two to five years. Service the debt, scale the revenue, then sell into a multiple. The lump sum funds whatever's next.",
+      t: "Exit",
+      d: "Run for two to five years. Service the debt. Scale the revenue. Sell. Cash out. Repeat.",
     },
   ];
   return (
     <section id="how" className="border-b border-line">
-      <div className="mx-auto max-w-5xl px-6 py-24 md:py-32">
-        <p className="mb-6 text-xs uppercase tracking-[0.3em] text-mute">
-          How it works
-        </p>
-        <h2 className="font-serif text-4xl leading-tight tracking-tight text-ink md:text-5xl">
-          Five steps. Built in.
-        </h2>
-        <ol className="mt-16 divide-y divide-line border-y border-line">
+      <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-amber">
+              How it works
+            </p>
+            <h2 className="font-serif text-4xl leading-[0.95] text-cream md:text-6xl">
+              Five steps.
+              <br />
+              <em className="text-amber">All</em> done with you.
+            </h2>
+          </div>
+          <p className="max-w-sm text-sm leading-relaxed text-cream-soft md:text-base">
+            We&apos;re not selling a course. Our team executes alongside you
+            from first call to exit check.
+          </p>
+        </div>
+        <ol className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-5">
           {steps.map((s) => (
-            <li
-              key={s.n}
-              className="grid gap-6 py-10 md:grid-cols-[120px_220px_1fr] md:items-baseline md:gap-12"
-            >
-              <span className="font-serif text-3xl text-blood">{s.n}</span>
-              <h3 className="font-serif text-2xl text-ink">{s.title}</h3>
-              <p className="text-base leading-relaxed text-ink-soft md:text-lg">
-                {s.body}
+            <li key={s.n} className="bg-night p-8">
+              <p className="numeral font-serif text-4xl font-bold text-amber md:text-5xl">
+                {s.n}
               </p>
+              <h3 className="mt-6 font-serif text-2xl text-cream">{s.t}</h3>
+              <p
+                className="mt-3 text-sm leading-relaxed text-cream-soft"
+                dangerouslySetInnerHTML={{ __html: s.d }}
+              />
             </li>
           ))}
         </ol>
@@ -190,33 +233,40 @@ function Industries() {
     "Insurance brokerages",
     "Body shops",
     "Pest control",
-    "Document storage & shredding",
+    "Document storage",
     "Tent rental",
     "Sign making",
-    "Auto dealers",
+    "Auto dealerships",
     "Meal prep operations",
     "Independent gyms",
   ];
   return (
-    <section className="border-b border-line bg-bone-deep">
-      <div className="mx-auto max-w-5xl px-6 py-24 md:py-32">
-        <p className="mb-6 text-xs uppercase tracking-[0.3em] text-mute">
-          What you&apos;d be buying
+    <section id="own" className="border-b border-line bg-night-2">
+      <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+        <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-amber">
+          What you&apos;d own
         </p>
-        <h2 className="font-serif text-4xl leading-tight tracking-tight text-ink md:text-5xl">
+        <h2 className="font-serif text-4xl leading-[0.95] text-cream md:text-6xl">
           Unsexy. Profitable.
           <br />
-          Older than you.
+          <em className="text-amber">Yours.</em>
         </h2>
-        <p className="mt-8 max-w-2xl text-base leading-relaxed text-ink-soft md:text-lg">
-          These are the industries we&apos;ve seen work. Simple operations.
-          Recurring revenue. Existing staff. Owners who never modernized
-          because they never had to. That&apos;s your edge.
+        <p className="mt-8 max-w-2xl text-base leading-relaxed text-cream-soft md:text-lg">
+          Twelve thousand small businesses change hands every month in
+          America. The ones we hunt: simple operations, recurring revenue,
+          existing staff, owners who never modernized. That last part is your
+          edge.
         </p>
-        <ul className="mt-12 grid gap-x-12 gap-y-4 font-serif text-2xl text-ink md:grid-cols-2 md:text-3xl">
+        <ul className="mt-12 grid gap-x-12 gap-y-2 font-serif text-3xl md:grid-cols-2 md:text-4xl">
           {list.map((i) => (
-            <li key={i} className="border-b border-line pb-3">
-              {i}
+            <li
+              key={i}
+              className="group flex items-center justify-between border-b border-line py-4 text-cream transition hover:text-amber"
+            >
+              <span>{i}</span>
+              <span className="text-amber opacity-0 transition group-hover:opacity-100">
+                →
+              </span>
             </li>
           ))}
         </ul>
@@ -225,73 +275,18 @@ function Industries() {
   );
 }
 
-function ExampleDeal() {
-  const rows: [string, string][] = [
-    ["Asking price", "$400,000"],
-    ["Annual cash flow", "$125,000"],
-    ["Annual revenue", "$500,000"],
-    ["Down from your capital", "~$20,000"],
-    ["Business funding used", "$200,000"],
-    ["Seller / outside financing", "$200,000"],
-  ];
+function Proof() {
   return (
-    <section id="example" className="border-b border-line">
+    <section className="border-b border-line">
       <div className="mx-auto max-w-5xl px-6 py-24 md:py-32">
-        <p className="mb-6 text-xs uppercase tracking-[0.3em] text-mute">
-          Example deal
+        <blockquote className="font-serif text-3xl leading-[1.15] text-cream md:text-5xl">
+          &ldquo;The fastest way to a seven-figure exit isn&apos;t a startup.
+          It&apos;s a <em className="text-amber">boring</em> business someone
+          else already built.&rdquo;
+        </blockquote>
+        <p className="mt-10 text-xs uppercase tracking-[0.3em] text-cream-soft">
+          The thesis our acquisitions team has run for years
         </p>
-        <h2 className="font-serif text-4xl leading-tight tracking-tight text-ink md:text-5xl">
-          $20K in.
-          <br />
-          $800K out.
-        </h2>
-        <p className="mt-8 max-w-2xl text-base leading-relaxed text-ink-soft md:text-lg">
-          Illustrative, not a promise. A typical structure on a small services
-          business we&apos;d look at. The math is the math.
-        </p>
-
-        <div className="mt-16 grid gap-12 md:grid-cols-2">
-          <div className="border border-line bg-bone p-8">
-            <h3 className="font-serif text-2xl text-ink">The buy</h3>
-            <dl className="mt-6 divide-y divide-line">
-              {rows.map(([k, v]) => (
-                <div
-                  key={k}
-                  className="flex items-baseline justify-between py-3 text-sm"
-                >
-                  <dt className="text-mute">{k}</dt>
-                  <dd className="font-serif text-xl text-ink">{v}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-
-          <div className="border border-line bg-ink p-8 text-bone">
-            <h3 className="font-serif text-2xl">The exit</h3>
-            <p className="mt-6 text-sm leading-relaxed text-bone/80">
-              Run the business for two to three years. Service the debt out of
-              cash flow. Modernize operations. Triple revenue from $500K to
-              $1.5M.
-            </p>
-            <dl className="mt-8 divide-y divide-bone/15">
-              <div className="flex items-baseline justify-between py-3 text-sm">
-                <dt className="text-bone/70">New valuation</dt>
-                <dd className="font-serif text-xl">$1,200,000</dd>
-              </div>
-              <div className="flex items-baseline justify-between py-3 text-sm">
-                <dt className="text-bone/70">Remaining debt</dt>
-                <dd className="font-serif text-xl">~$400,000</dd>
-              </div>
-              <div className="flex items-baseline justify-between py-3 text-sm">
-                <dt className="text-bone/70">Lump sum to you</dt>
-                <dd className="font-serif text-2xl text-bone">~$800,000</dd>
-              </div>
-            </dl>
-            <p className="mt-8 border-t border-bone/15 pt-6 text-xs uppercase tracking-widest text-bone/60">
-              Rinse. Repeat. Stack.
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   );
@@ -299,48 +294,48 @@ function ExampleDeal() {
 
 function WhoThisIsFor() {
   const fits = [
-    "You have $20K or more sitting liquid",
-    "You earn stable income (W-2 or your own business)",
-    "You're tired of trading hours for money",
-    "You're willing to operate, not chase passive",
+    "You&apos;ve got $20K or more sitting liquid",
+    "You earn stable income (W-2 or self-employed)",
+    "You&apos;re tired of trading hours for money",
+    "You&apos;re willing to operate, not chase passive",
     "You can be patient for two to five years",
   ];
   const notFits = [
-    "You want guaranteed returns by next quarter",
-    "You won't put any of your own money in",
-    "You're looking for a side hustle",
-    "You won't take a phone call to get started",
+    "You want returns by next quarter",
+    "You won&apos;t put any of your own money in",
+    "You&apos;re looking for a side hustle",
+    "You won&apos;t take a phone call to start",
   ];
   return (
-    <section id="who" className="border-b border-line bg-bone-deep">
-      <div className="mx-auto max-w-5xl px-6 py-24 md:py-32">
-        <p className="mb-6 text-xs uppercase tracking-[0.3em] text-mute">
-          Who this is for
+    <section id="who" className="border-b border-line bg-night-2">
+      <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+        <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-amber">
+          Who&apos;s in
         </p>
-        <h2 className="font-serif text-4xl leading-tight tracking-tight text-ink md:text-5xl">
+        <h2 className="font-serif text-4xl leading-[0.95] text-cream md:text-6xl">
           We&apos;re picky.
           <br />
-          You should be too.
+          <em className="text-amber">You should be too.</em>
         </h2>
         <div className="mt-16 grid gap-12 md:grid-cols-2">
-          <div>
-            <h3 className="font-serif text-xl text-ink">A fit</h3>
-            <ul className="mt-6 space-y-4 text-base leading-relaxed text-ink-soft md:text-lg">
+          <div className="border border-line bg-night p-8">
+            <h3 className="font-serif text-xl text-amber">A fit</h3>
+            <ul className="mt-6 space-y-4 text-base leading-relaxed text-cream md:text-lg">
               {fits.map((f) => (
                 <li key={f} className="flex gap-4 border-b border-line pb-4">
-                  <span className="font-serif text-blood">+</span>
-                  <span>{f}</span>
+                  <span className="font-serif text-amber">✓</span>
+                  <span dangerouslySetInnerHTML={{ __html: f }} />
                 </li>
               ))}
             </ul>
           </div>
-          <div>
-            <h3 className="font-serif text-xl text-ink">Not a fit</h3>
+          <div className="border border-line bg-night-2 p-8">
+            <h3 className="font-serif text-xl text-cream-soft">Not a fit</h3>
             <ul className="mt-6 space-y-4 text-base leading-relaxed text-mute md:text-lg">
               {notFits.map((f) => (
                 <li key={f} className="flex gap-4 border-b border-line pb-4">
-                  <span className="font-serif">&mdash;</span>
-                  <span>{f}</span>
+                  <span className="font-serif">✕</span>
+                  <span dangerouslySetInnerHTML={{ __html: f }} />
                 </li>
               ))}
             </ul>
@@ -355,18 +350,17 @@ function Apply() {
   return (
     <section id="apply" className="border-b border-line">
       <div className="mx-auto max-w-3xl px-6 py-24 md:py-32">
-        <p className="mb-6 text-xs uppercase tracking-[0.3em] text-mute">
+        <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-amber">
           Apply
         </p>
-        <h2 className="font-serif text-4xl leading-tight tracking-tight text-ink md:text-5xl">
+        <h2 className="font-serif text-4xl leading-[0.95] text-cream md:text-6xl">
           Five minutes.
           <br />
-          We&apos;ll be in touch this week.
+          <em className="text-amber">We&apos;ll call you this week.</em>
         </h2>
-        <p className="mt-8 text-base leading-relaxed text-ink-soft md:text-lg">
+        <p className="mt-8 text-base leading-relaxed text-cream-soft md:text-lg">
           Be honest on the numbers. Soft tire-kickers get filtered out, real
-          operators get a phone call. We work with a small number of people at
-          a time.
+          operators get a phone call. We work with twelve operators a year.
         </p>
         <div className="mt-12">
           <ApplyForm />
@@ -378,32 +372,28 @@ function Apply() {
 
 function Footer() {
   return (
-    <footer className="bg-ink text-bone">
-      <div className="mx-auto max-w-5xl px-6 py-16">
-        <div className="grid gap-12 md:grid-cols-2">
+    <footer className="bg-night-2 text-cream-soft">
+      <div className="mx-auto max-w-6xl px-6 py-16">
+        <div className="grid gap-12 md:grid-cols-[1fr_auto]">
           <div>
-            <p className="font-serif text-2xl">Quiet Money</p>
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-bone/70">
+            <p className="font-serif text-3xl text-cream">Stack</p>
+            <p className="mt-4 max-w-md text-sm leading-relaxed">
               We connect qualified operators with an established acquisitions
-              group. Sourcing, financing, and consulting are handled by our
+              group. Sourcing, financing, and consulting handled by our
               partner firm. Apply only if you&apos;re ready to do the work.
             </p>
           </div>
-          <div className="text-sm text-bone/70">
-            <p className="text-xs uppercase tracking-[0.3em] text-bone/50">
-              Disclosure
-            </p>
-            <p className="mt-3 leading-relaxed">
-              Quiet Money is an introduction service. We are not a lender,
-              broker-dealer, or fiduciary. All financing decisions, business
-              valuations, and acquisitions are independently advised and
-              executed. Past results don&apos;t guarantee future returns.
-              Nothing here is investment advice.
-            </p>
+          <div className="text-xs uppercase tracking-[0.3em] text-cream-soft/70">
+            <p>&copy; {new Date().getFullYear()} Stack</p>
+            <p className="mt-2 text-mute">All rights reserved</p>
           </div>
         </div>
-        <div className="mt-16 border-t border-bone/15 pt-6 text-xs uppercase tracking-[0.3em] text-bone/40">
-          © {new Date().getFullYear()} Quiet Money
+        <div className="mt-12 border-t border-line pt-6 text-xs leading-relaxed text-mute">
+          Stack is an introduction service. We are not a lender, broker-dealer,
+          or fiduciary. All financing decisions, business valuations, and
+          acquisitions are independently advised and executed. Past results
+          don&apos;t guarantee future returns. Nothing on this page is
+          investment advice.
         </div>
       </div>
     </footer>

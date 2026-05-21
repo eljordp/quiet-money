@@ -5,7 +5,7 @@ import { useState } from "react";
 type Status = "idle" | "submitting" | "ok" | "err";
 
 const liquidOptions = [
-  "Under $20K",
+  "$10K — $20K",
   "$20K — $50K",
   "$50K — $100K",
   "$100K — $250K",
@@ -59,9 +59,10 @@ export function ApplyForm() {
 
   if (status === "ok") {
     return (
-      <div className="border border-line bg-bone-deep p-10 text-center">
-        <h3 className="font-serif text-3xl text-ink">Got it.</h3>
-        <p className="mt-4 text-base leading-relaxed text-ink-soft md:text-lg">
+      <div className="rounded-2xl border border-amber/40 bg-night-2 p-10 text-center">
+        <p className="text-[10px] uppercase tracking-[0.4em] text-amber">In motion</p>
+        <h3 className="mt-4 font-serif text-4xl text-cream">Got it.</h3>
+        <p className="mt-4 text-base leading-relaxed text-cream-soft md:text-lg">
           We&apos;ll be in touch within 48 hours. If you&apos;re a fit, we
           schedule the intro call this week.
         </p>
@@ -109,16 +110,16 @@ export function ApplyForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="rounded-full bg-ink px-10 py-4 text-sm uppercase tracking-widest text-bone transition hover:bg-blood disabled:opacity-50"
+          className="rounded-full bg-amber px-10 py-4 text-sm font-semibold uppercase tracking-widest text-night transition hover:bg-amber-2 disabled:opacity-50"
         >
           {status === "submitting" ? "Sending…" : "Submit application"}
         </button>
         {status === "err" && (
           <p className="mt-4 text-sm text-blood">{errorMsg}</p>
         )}
-        <p className="mt-6 text-xs leading-relaxed text-mute">
-          By submitting, you agree to be contacted by Quiet Money about this
-          opportunity. We don&apos;t sell your information.
+        <p className="mt-6 text-xs leading-relaxed text-cream-soft/70">
+          By submitting, you agree to be contacted by Stack about this
+          opportunity. We don&apos;t share your information.
         </p>
       </div>
     </form>
@@ -140,7 +141,7 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="text-xs uppercase tracking-[0.2em] text-mute">
+      <span className="text-[10px] uppercase tracking-[0.3em] text-cream-soft/80">
         {label}
         {required && " *"}
       </span>
@@ -149,7 +150,7 @@ function Field({
         type={type}
         required={required}
         placeholder={placeholder}
-        className="mt-2 w-full border-b border-line bg-transparent py-3 font-serif text-xl text-ink placeholder-mute/60 focus:border-ink focus:outline-none"
+        className="mt-2 w-full border-b border-line bg-transparent py-3 font-serif text-xl text-cream placeholder-cream-soft/40 focus:border-amber focus:outline-none"
       />
     </label>
   );
@@ -168,7 +169,7 @@ function Select({
 }) {
   return (
     <label className="block">
-      <span className="text-xs uppercase tracking-[0.2em] text-mute">
+      <span className="text-[10px] uppercase tracking-[0.3em] text-cream-soft/80">
         {label}
         {required && " *"}
       </span>
@@ -176,13 +177,13 @@ function Select({
         name={name}
         required={required}
         defaultValue=""
-        className="mt-2 w-full border-b border-line bg-transparent py-3 font-serif text-xl text-ink focus:border-ink focus:outline-none"
+        className="mt-2 w-full border-b border-line bg-night py-3 font-serif text-xl text-cream focus:border-amber focus:outline-none"
       >
         <option value="" disabled>
           Select one
         </option>
         {options.map((o) => (
-          <option key={o} value={o}>
+          <option key={o} value={o} className="bg-night text-cream">
             {o}
           </option>
         ))}
@@ -204,7 +205,7 @@ function Textarea({
 }) {
   return (
     <label className="block">
-      <span className="text-xs uppercase tracking-[0.2em] text-mute">
+      <span className="text-[10px] uppercase tracking-[0.3em] text-cream-soft/80">
         {label}
         {required && " *"}
       </span>
@@ -213,7 +214,7 @@ function Textarea({
         rows={3}
         required={required}
         placeholder={placeholder}
-        className="mt-2 w-full border-b border-line bg-transparent py-3 text-base text-ink placeholder-mute/60 focus:border-ink focus:outline-none"
+        className="mt-2 w-full border-b border-line bg-transparent py-3 text-base text-cream placeholder-cream-soft/40 focus:border-amber focus:outline-none"
       />
     </label>
   );

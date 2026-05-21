@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Bodoni_Moda, Inter } from "next/font/google";
 import "./globals.css";
 
-const serif = Cormorant_Garamond({
+const serif = Bodoni_Moda({
   variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600", "700", "800", "900"],
 });
 
 const sans = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Quiet Money — Own a business no one's bragging about.",
+  title: "Stack — Quiet capital. Loud exits.",
   description:
-    "We help operators acquire boring, cash-flowing American businesses. Sourced, funded, and structured for a 3 to 5 year exit.",
+    "Acquire a boring, cash-flowing American business. We source it, fund it, and structure your exit. The come-up nobody talks about.",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${serif.variable} ${sans.variable}`}>
-      <body className="min-h-screen bg-bone text-ink antialiased">
+      <body className="min-h-screen bg-night text-cream antialiased">
         {children}
       </body>
     </html>
